@@ -1,0 +1,10 @@
+<h1>詳細ページ</h1>
+
+<p><%= @share.title %></p>
+<p><%= @share.content %></p>
+<p><%= @share.place %></p>
+
+<%= link_to '一覧に戻る', shares_path %>
+<%= link_to 'この投稿を編集する', edit_share_path(@share) %>
+<%= link_to 'この投稿を削除する', @share, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+
