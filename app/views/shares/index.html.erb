@@ -1,5 +1,11 @@
-<h1>投稿一覧</h1>
 <div class="container">
+  <div class="header">
+  <h1>投稿一覧</h1>
+  <%= link_to new_share_path, method: :get do %>
+    <i class="fas fa-plus fa-3x text-right"></i>
+  <% end %>
+  </div>
+  
   <div class="row">
     <% @shares.each do |share| %>
       <div class="col-md-4">
@@ -20,7 +26,4 @@
 
 <%= paginate @shares %>
 
-<button>
-  <%= link_to '投稿する', new_share_path, class: "btn btn-secondry" %>
-</button>
 
