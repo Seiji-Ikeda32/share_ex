@@ -1,6 +1,6 @@
 class SharesController < ApplicationController
   def index
-      @shares = Share.all
+      @shares = Share.all.page(params[:page])
   end
 
   def show
