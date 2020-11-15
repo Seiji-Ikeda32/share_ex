@@ -24,18 +24,19 @@ class SharesController < ApplicationController
   end
 
   def edit
-      @share = Share.new(share_params)
-      
-      if @share.save
-      flash[:success] = '正常に編集されました'
-      redirect_to @share
-    else
-      flash.now[:danger] = '編集できませんでした'
-      render :new
-    end
+      @share = Share.find(params[:id])
   end
 
   def update
+      @share = Share.find(params[:id])
+      
+      if @share.save
+        flash[:success] = '正常に編集されました'
+        redirect_to @share
+      else
+        flash.now[:danger] = '編集できませんでした'
+        render :new
+      end
   end
 
   def destroy
@@ -45,11 +46,9 @@ class SharesController < ApplicationController
     flash[:success] = '正常に削除されました'
     redirect_to shares_url
   end
-
   
   def share_params
     params.require(:share).permit(:title, :content, :place)
   end
-  
   
 end

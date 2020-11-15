@@ -1,5 +1,6 @@
-<div class="row">
-  <div class="col-6">
+<div class="container">
+  <div class="row">
+    
     <%= form_with(model: share, local: true) do |f| %>
 
       <% if share.errors.any? %>
@@ -13,22 +14,23 @@
       <% end %>
   
       <div class="form-group">
-        <%= f.label :title, 'タイトル' %>
+        <%= f.label :title, 'タイトル (自由なタイトルをつけよう！)' %>
         <%= f.text_field :title, class: 'form-control' %>
       </div>
   
       <div class="form-group">
-        <%= f.label :content, '内容' %>
-        <%= f.text_field :content, class: 'form-control' %>
+        <%= f.label :content, '内容 (感想や思い出を書こう！)' %>
+        <%= f.text_area :content, class: 'form-control' %>
       </div>
   
       <div class="form-group">
-        <%= f.label :place, '場所' %>
+        <%= f.label :place, '場所 (名前や地名などを書こう！)' %>
         <%= f.text_field :place, class: 'form-control' %>
       </div>
   
       <%= f.submit '投稿' %>
     <% end %>
+    
   </div>
 </div>
 
