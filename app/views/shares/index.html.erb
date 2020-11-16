@@ -1,9 +1,9 @@
 <div class="container">
   <div class="header">
-  <h1>投稿一覧</h1>
-  <%= link_to new_share_path, method: :get do %>
-    <i class="fas fa-plus fa-3x text-right"></i>
-  <% end %>
+    <h1>投稿一覧</h1>
+    <%= link_to new_share_path, method: :get do %>
+      <i class="fas fa-plus fa-3x text-right"></i>
+    <% end %>
   </div>
   
   <div class="row">
@@ -16,14 +16,19 @@
           </div>
           <div class="card-body">
             <p><%= share.content %></p>
-            <p class="text-right">場所：<%= share.place %></p>
+          </div>
+          <div class="card-footer">
+            場所：<%= share.place %>
+            <p class="text-right mb-0"><%= I18n.l(share.created_at, format: :default) %></p>
           </div>
         </div>
       </div>
     <% end %>
   </div>
   
-  <%= paginate @shares %>
+  <div class="page mt-5 mb-5">
+    <%= paginate @shares %>
+  </div>
 
 </div>
 

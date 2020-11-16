@@ -1,9 +1,9 @@
-<h1>詳細ページ</h1>
+<div class="container">
+  <h1>詳細ページ</h1>
 
-<div class="menu mb-1">
-    
+  <div class="menu mb-1">
     <%= link_to shares_path, method: :get do %>
-       <i class="btn btn-secondary">一覧に戻る</i>
+      <i class="btn btn-secondary">一覧に戻る</i>
     <% end %>
     
     <%= link_to edit_share_path, method: :get do %>
@@ -13,20 +13,26 @@
     <%= link_to share_path, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } do %>
        <i class="fas fa-trash-alt fa-2x ml-3"></i>
     <% end %>
+  </div>
+
+  <div class="card">
+    <div class="card-header text-center">
+      <%= @share.title %>
+    </div>
     
+    <div class="card-body">
+      <p><%= @share.content %></p>
+    </div>
+    
+    <div class="card-footer">
+      場所：<%= @share.place %></p>
+      <p class="text-right mb-0"><%= I18n.l(@share.created_at, format: :default) %></p>
+    </div> 
+  </div>
+  
 </div>
 
-<div class="card">
-  <div class="card-header text-center">
-    <%= @share.title %>
-  </div>
-  <div class="card-body">
-     <p><%= @share.content %></p>
-     <p class="text-right">場所：<%= @share.place %></p>
-  </div>
-</div>
 
           
-
 
 
