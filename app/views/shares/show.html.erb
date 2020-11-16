@@ -1,8 +1,10 @@
 <h1>詳細ページ</h1>
 
 <div class="menu mb-1">
-  
-    <%= link_to '一覧に戻る', shares_path %>
+    
+    <%= link_to shares_path, method: :get do %>
+       <i class="btn btn-secondary">一覧に戻る</i>
+    <% end %>
     
     <%= link_to edit_share_path, method: :get do %>
       <i class="fas fa-edit fa-2x mr-3"></i>
