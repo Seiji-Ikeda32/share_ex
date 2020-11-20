@@ -1,6 +1,9 @@
 class SharesController < ApplicationController
+  
+  
   def index
       @shares = Share.all.page(params[:page]).per(15)
+      @user = current_user
   end
 
   def show
@@ -8,11 +11,11 @@ class SharesController < ApplicationController
   end
 
   def new
-      @share = Share.new
+      @share = current_user.shares.build
   end
 
   def create
-      @share = Share.new(share_params)
+      @share = current_user.shares.build(share_params)
       
       if @share.save
       flash[:success] = '正常に投稿されました'
@@ -24,11 +27,11 @@ class SharesController < ApplicationController
   end
 
   def edit
-      @share = Share.find(params[:id])
+      @share = current_user.shares.find(params[:id])
   end
 
   def update
-      @share = Share.find(params[:id])
+      @share = current_user.shares.find(params[:id])
       
       if @share.save
         flash[:success] = '正常に編集されました'
@@ -40,7 +43,7 @@ class SharesController < ApplicationController
   end
 
   def destroy
-    @share = Share.find(params[:id])
+    @share = current_user.shares.find(params[:id])
     @share.destroy
 
     flash[:success] = '正常に削除されました'
@@ -48,7 +51,7 @@ class SharesController < ApplicationController
   end
   
   def share_params
-    params.require(:share).permit(:title, :content, :place)
+    params.require(:share).permit(:title, :content, :place, :name)
   end
   
 end

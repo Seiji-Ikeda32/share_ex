@@ -70,3 +70,12 @@ gem 'font-awesome-sass'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 
+gem 'devise'
+
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
+gem 'devise-bootstrap-views'
+
+
+

@@ -1,0 +1,23 @@
+.show_link {
+    text-decoration: none;
+    color: black;
+    
+    .card-header {
+        padding-bottom:0px;
+        
+    }
+    
+    .card-body {
+        height: 180px;
+    }
+     
+    .card-footer {
+        padding-bottom: 0px;
+        
+    }
+}
+
+.show_link:hover {
+    text-decoration: none;
+    color: black;
+}
