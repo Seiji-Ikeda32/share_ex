@@ -1,6 +1,5 @@
 <div class="container">
   <div class="header">
-    <h1>投稿一覧</h1>
     <%= link_to new_share_path, method: :get do %>
       <i class="fas fa-plus fa-3x text-right"></i>
     <% end %>
@@ -9,21 +8,24 @@
   <div class="row">
     <% @shares.each do |share| %>
       <div class="col-md-4">
-        <div class="card mt-4">
-          <%= link_to share.id, share %>
-          <div class="card-header text-center">
-            <%= share.title %>
+        <%= link_to share, class:'show_link' do %>
+          <div class="card mt-4">
+            <div class="card-header">
+              <h6 class="text-center md-0"><%= share.title %></h6>
+              <p class="text-right mb-0"><%= '@' + share.user.name %></p>
+            </div>
+            <div class="card-body">
+              <p><%= simple_format(share.content.truncate(225, omission: '続きを読む')) %></p>
+             
+            </div>
+            <div class="card-footer">
+              場所: <%= share.place %>
+              <p class="text-right mb-0"><%= I18n.l(share.created_at, format: :default) %></p>
+            </div>
           </div>
-          <div class="card-body">
-            <p><%= share.content %></p>
-          </div>
-          <div class="card-footer">
-            場所：<%= share.place %>
-            <p class="text-right mb-0"><%= I18n.l(share.created_at, format: :default) %></p>
-          </div>
-        </div>
+        <% end %>
       </div>
-    <% end %>
+    <% end %> 
   </div>
   
   <div class="page mt-5 mb-5">

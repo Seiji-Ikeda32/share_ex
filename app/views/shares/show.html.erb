@@ -3,16 +3,21 @@
 
   <div class="menu mb-1">
     <%= link_to shares_path, method: :get do %>
-      <i class="btn btn-secondary">一覧に戻る</i>
+      <i class="btn btn-secondary mb-1">一覧に戻る</i>
     <% end %>
     
-    <%= link_to edit_share_path, method: :get do %>
-      <i class="fas fa-edit fa-2x mr-3"></i>
-    <% end %>
-  
-    <%= link_to share_path, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } do %>
-       <i class="fas fa-trash-alt fa-2x ml-3"></i>
-    <% end %>
+    <!--自分の投稿した記事のみ編集と削除可能-->
+    <% if user_signed_in? && current_user.my_post?(@share)%>
+    　<!--編集ボタン（編集マーク埋め込み）-->
+      <%= link_to edit_share_path, method: :get do %>
+        <i class="fas fa-edit fa-2x mr-3"></i>
+      <% end %>
+  　　<!--削除ボタン（削除ボタン埋め込み）-->
+      <%= link_to share_path, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } do %>
+        <i class="fas fa-trash-alt fa-2x ml-3"></i>
+      <% end %>
+      
+    <% end %> 
   </div>
 
   <div class="card">
@@ -21,7 +26,7 @@
     </div>
     
     <div class="card-body">
-      <p><%= @share.content %></p>
+      <p><%= simple_format(@share.content) %></p>
     </div>
     
     <div class="card-footer">
