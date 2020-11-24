@@ -52,3 +52,5 @@ production:
   database: share_ex_production
   username: share_ex
   password: <%= ENV['SHARE_EX_DATABASE_PASSWORD'] %>
+  encoding: utf8
+  pool: 15
